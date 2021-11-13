@@ -1,0 +1,26 @@
+/* @import './fonts.css';
+
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+:root{
+
+    --club: #E94A47;
+    --pro: #00AE69;
+    --bblue:  #3366FF;
+    --tblue:  #3366FF99;
+    --Open-sans: 'OpenSans';
+    --borderColor: #3366FF;
+    --SFProText: 'SFT';
+    --Rubik: 'Rubik';
+    --SFProDisplay: 'SFD';
+    --Poppins: 'Poppins'
+
+}
+/* h1, h2, h3, h4, h5, h6 {
+
+} */

@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'Open-sans';
+    src: url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+}
+@font-face {
+    font-family: 'SF Pro Text ';
+    src: url('/fonts/FontsFree-Net-Baloo2-Medium.ttf');
+}
+@font-face {
+    font-family: 'Rubik';
+    src: url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Rubik:ital,wght@1,500&display=swap');
+}
+@font-face {
+    font-family: 'SF Pro Display';
+    src: url('/fonts/SF\ Pro\ Display-Medium.ttf');
+}
+@font-face {
+    font-family: 'Poppins7';
+    src: url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Poppins:wght@700&family=Rubik:ital,wght@1,500&display=swap');
+}
