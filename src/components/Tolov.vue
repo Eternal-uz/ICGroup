@@ -86,9 +86,8 @@
             BOSHQA
           </button>
         </div>
-        <button
-          type="submit"
-          class="
+        <my-button type="submit" class="
+            text-center
             block
             w-full
             bg-blue-600
@@ -98,11 +97,10 @@
             px-3
             rounded
             transition
-            hover:bg-blue-800
-          "
+            hover:bg-blue-500 "
         >
           Yuborish
-        </button>
+        </my-button>
       </div>
 </template>
 

@@ -72,7 +72,7 @@
         </h2>
        </div>
       <div class="flex px-10 mt-3">
-        <img src="@/assets/images/president.png" class="president object-cover w-14 h-14 rounded-2xl my-3 mr-3  " />
+        <img src="@/assets/images/president.png" class="president object-cover w-14 h-14 rounded-2xl my-3 mr-3 " />
         <p class="font-SFProText font-semibold text-lg text-justify tracking-tight my-3 mr-3 ">
           Shavkat Mirziyoyev <br />
           <span class="font-SFProText text-sm span-text   "> O‘zbekiston Respublikasi Prezidenti </span>

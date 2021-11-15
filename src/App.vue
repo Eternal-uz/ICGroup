@@ -16,7 +16,9 @@
         <li><a href="#" class="mx-2 text-base p-1">Grantlar</a></li>
         <li><a href="#" class="mx-2 text-base p-1">Soliq Imtiyozlari</a></li>
         <li><a href="#" class="mr-2 text-base"><i class="fas fa-sign-in-alt mr-2"></i>Kirish</a></li>
-        <register-dialog v-model:show="dialogVisible" />
+       <my-dialog v-model:show="dialogVisible" >
+        <register/>
+       </my-dialog>
         <li> <a href="#" @click="register" class="border-2 rounded-md border-bgblue mx-2 text-base p-1" >Royxatdan O'tish</a></li>
       </ul>
     </nav>
@@ -26,9 +28,10 @@
 
 
 <script>
-import RegisterDialog from './components/UI/RegisterDialog.vue';
+import MyDialog from '@/components/UI/MyDialog.vue';
+import Register from '@/components/Register.vue';
 export default {
-  components: { RegisterDialog },
+  components: { MyDialog, Register },
   name: 'App',
   data(){
     return{

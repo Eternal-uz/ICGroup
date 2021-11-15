@@ -1,8 +1,7 @@
+import MyDialog from '@/components/UI/MyDialog';
+import MyButton from '@/components/UI/MyButton';
 
-import RegisterDialog from '@/components/UI/RegisterDialog';
-
-
-
-export default [
-    RegisterDialog
-]
+export default {
+    MyDialog,
+    MyButton
+}
