@@ -12,10 +12,10 @@
   >
     <!-- Name -->
     <div class="mb-3">
-      <label class="inline-block mb-2">Name</label>
+      <label class="inline-block mb-2">Ism</label>
       <vee-field
         type="text"
-        name="name"
+        name="ism"
         class="
           block
           w-full
@@ -28,9 +28,9 @@
           focus:outline-none focus:border-black
           rounded
         "
-        placeholder="Enter Name"
+        placeholder="Ismingizni Yozing"
       />
-      <!-- <ErrorMessage class="text-red-600" name="name" /> -->
+      <ErrorMessage class="text-red-600" name="ism" />
     </div>
     <!-- Email -->
     <div class="mb-3">
@@ -50,13 +50,13 @@
           focus:outline-none focus:border-black
           rounded
         "
-        placeholder="Enter Email"
+        placeholder="Emailni kiriting"
       />
-      <!-- <ErrorMessage class="text-red-600" name="email" /> -->
+      <ErrorMessage class="text-red-600" name="email" />
     </div>
     <!-- Age -->
     <div class="mb-3">
-      <label class="inline-block mb-2">Age</label>
+      <label class="inline-block mb-2">Yosh</label>
       <vee-field
         name="age"
         type="number"
@@ -73,14 +73,14 @@
           rounded
         "
       />
-      <!-- <ErrorMessage class="text-red-600" name="age" /> -->
+      <ErrorMessage class="text-red-600" name="age" />
     </div>
     <!-- Password -->
     <div class="mb-3">
-      <label class="inline-block mb-2">Password</label>
-      <vee-field name="password" :bails="false" v-slot="{ field, errors }">
+      <label class="inline-block mb-2">Parol</label>
+      <vee-field name="parol" :bails="false" v-slot="{ field, errors }">
         <vee-field
-          type="password"
+          type="parol"
           class="
             block
             w-full
@@ -93,18 +93,18 @@
             focus:outline-none focus:border-black
             rounded
           "
-          placeholder="Password"
+          placeholder="Parol"
           v-bind="field"
         />
         <div class="text-red-600" v-for="error in errors" :key="error">
           {{ error }}
         </div>
       </vee-field>
-      <!-- <ErrorMessage class="text-red-600" name="password" /> -->
+      <ErrorMessage class="text-red-600" name="parol" />
     </div>
     <!-- Confirm Password -->
     <div class="mb-3">
-      <label class="inline-block mb-2">Confirm Password</label>
+      <label class="inline-block mb-2">Parolni Tasdiklash</label>
       <vee-field
         name="confirm_password"
         type="password"
@@ -120,13 +120,13 @@
           focus:outline-none focus:border-black
           rounded
         "
-        placeholder="Confirm Password"
+        placeholder="Parolni Tasdiklang"
       />
-      <!-- <ErrorMessage class="text-red-600" name="confirm_password" /> -->
+      <ErrorMessage class="text-red-600" name="confirm_password" />
     </div>
-    <!-- Country -->
+    <!-- County -->
     <div class="mb-3">
-      <label class="inline-block mb-2">Country</label>
+      <label class="inline-block mb-2">Viloyat</label>
       <vee-field
         as="select"
         name="country"
@@ -143,12 +143,21 @@
           rounded
         "
      >
-        <option value="USA">USA</option>
-        <option value="Mexico">Mexico</option>
-        <option value="Germany">Germany</option>
-        <option value="Antartica">Antartica</option>
+        <option value="Andijon">Andijon</option>
+        <option value="Buxora">Buxora</option>
+        <option value="Farg'ona">Farg'ona</option>
+        <option value="Jizzax">Jizzax</option>
+        <option value="Urganch">Urganch</option>
+        <option value="Namangan">Namangan</option>
+        <option value="Navoi">Navoi</option>
+        <option value="Qashqadaryo">Qashqadaryo</option>
+        <option value="Samarkand">Samarkand</option>
+        <option value="Sirdaryo">Sirdaryo</option>
+        <option value="Surxondaryo">Surxondaryo</option>
+        <option value="Tashkent">Tashkent</option>
+        <option value="Karakalpakston">Karakalpakston</option>
       </vee-field>
-      <!-- <ErrorMessage class="text-red-600" name="country" /> -->
+      <ErrorMessage class="text-red-600" name="country" />
     </div>
     <!-- TOS -->
     <div class="mb-3 pl-6">
@@ -159,7 +168,7 @@
         class="w-4 h-4 float-left -ml-6 mt-1 rounded"
       />
       <label class="inline-block">Accept terms of service</label>
-      <!-- <ErrorMessage class="text-red-600" name="tos" /> -->
+      <ErrorMessage class="text-red-600" name="tos" />
     </div>
     <button type="submit" :disabled="reg_in_submission"
       class="
@@ -186,23 +195,22 @@ export default {
   data() {
     return {
       schema: {
-        name: "required|min:3|max:100|alpha_spaces",
+        ism: "required|min:3|max:100|alpha_spaces",
         email: "required|min:3|max:100|email",
         age: "required|min_value:18|max_value:100|",
-        password: "required|min:3|max:32",
+        parol: "required|min:3|max:32",
         confirm_password: "confirmed:@password",
-        country: "required|country_excluded:Antartica",
+        country: "required|country_excluded:Karakalpakston",
         tos: "tos",
         genre: "required"
       },
       userData: {
-        country: "USA",
-        genre: 'Pop'
+        country: "Tashkent",
       },
       reg_in_submission: false,
       reg_show_alert: false,
       reg_alert_variant: "bg-blue-500",
-      reg_alert_message: "Please wait! Your account is being created",
+      reg_alert_message: "Iltimos, hisobingiz yaratilishini kuting",
     };
   },
   methods: {
@@ -210,7 +218,7 @@ export default {
       this.reg_show_alert = true;
       this.reg_in_submission = true;
       this.reg_alert_variant = "bg-blue-500";
-      this.reg_alert_message = "Please wait! Your account is being created.";
+      this.reg_alert_message = "Iltimos, hisobingiz yaratilishini kuting";
 
       try {
         await this.$store.dispatch('register', values);
@@ -218,12 +226,12 @@ export default {
         this.reg_in_submission = false;
         this.reg_alert_variant = "bg-red-500";
         this.reg_alert_message =
-          "And unexpected error occured, please try again later";
+          "Kutilmagan xatolik yuz berdi, keyinroq qayta urinib ko'ring";
         return;
       }
      
       this.reg_show_variant = "bg-green-500";
-      this.reg_show_message = "Success! Your account has been created.";
+      this.reg_show_message = "Muvaffaqiyat! Hisobingiz yaratildi";
       window.location.reload();
     },
   },
