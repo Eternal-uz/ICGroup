@@ -15,11 +15,16 @@
         <li><a href="#" class="mx-2 text-base p-1">Asosiy</a></li>
         <li><a href="#" class="mx-2 text-base p-1">Grantlar</a></li>
         <li><a href="#" class="mx-2 text-base p-1">Soliq Imtiyozlari</a></li>
-        <li><a href="#" class="mr-2 text-base"><i class="fas fa-sign-in-alt mr-2"></i>Kirish</a></li>
-       <my-dialog v-model:show="dialogVisible" >
+
+        <my-dialog v-model:show="loginVisible" >
+          <login  />
+        </my-dialog>
+        <li><a href="#" @click="showLogin" class="mr-2 text-base"><i class="fas fa-sign-in-alt mr-2"></i>Kirish</a></li>
+        
+       <my-dialog v-model:show="registerVisible" >
         <register/>
        </my-dialog>
-        <li> <a href="#" @click="register" class="border-2 rounded-md border-bgblue mx-2 text-base p-1" >Royxatdan O'tish</a></li>
+        <li> <a href="#" @click="showRegister" class="border-2 rounded-md border-bgblue mx-2 text-base p-1" >Royxatdan O'tish</a></li>
       </ul>
     </nav>
   </div>
@@ -30,19 +35,25 @@
 <script>
 import MyDialog from '@/components/UI/MyDialog.vue';
 import Register from '@/components/Register.vue';
+import Login from './components/Login.vue';
 export default {
-  components: { MyDialog, Register },
+  components: { MyDialog, Register, Login },
   name: 'App',
   data(){
     return{
-      dialogVisible: false
+     registerVisible: false,
+     loginVisible: false
 
     }
   },
   methods:{
-    register(){
-      this.dialogVisible = true
-      console.log(this.dialogVisible);
+    showRegister(){
+      this.registerVisible = true
+      console.log(this.registerVisible);
+    },
+    showLogin(){
+      this.loginVisible = true
+      console.log(this.loginVisible);
     }
   }
 }

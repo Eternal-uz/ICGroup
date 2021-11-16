@@ -9,6 +9,7 @@
     :validation-schema="schema"
     @submit="register"
     :initial-values="userData"
+    class="overflow-hidden"
   >
     <!-- Name -->
     <div class="mb-3">
@@ -174,13 +175,13 @@
       class="
         block
         w-full
-        bg-purple-600
+        bg-blue-500
         text-white
         py-1.5
         px-3
         rounded
         transition
-        hover:bg-purple-700
+        hover:bg-blue-600
       "
     >
       Submit
