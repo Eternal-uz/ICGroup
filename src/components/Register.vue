@@ -1,7 +1,8 @@
 <template>
-  <div v-if="reg_show_alert"
-    :class="reg_alert_variant"
-    class="text-white text-center rounded font-bold p-5 mb-4"
+  <div 
+  v-if="reg_show_alert"
+  :class="reg_alert_variant"
+  class="text-white text-center rounded font-bold p-5 mb-4"
   >
     {{ reg_alert_message }}
   </div>
@@ -79,9 +80,9 @@
     <!-- Password -->
     <div class="mb-3">
       <label class="inline-block mb-2">Parol</label>
-      <vee-field name="parol" :bails="false" v-slot="{ field, errors }">
         <vee-field
-          type="parol"
+          name="password"
+          type="password"
           class="
             block
             w-full
@@ -97,11 +98,7 @@
           placeholder="Parol"
           v-bind="field"
         />
-        <div class="text-red-600" v-for="error in errors" :key="error">
-          {{ error }}
-        </div>
-      </vee-field>
-      <ErrorMessage class="text-red-600" name="parol" />
+      <ErrorMessage class="text-red-600" name="password" />
     </div>
     <!-- Confirm Password -->
     <div class="mb-3">
@@ -190,7 +187,7 @@
 </template>
 
 <script>
-
+// import {  auth, } from '@/includes/firebase';
 export default {
   name: "Register",
   data() {
@@ -216,13 +213,18 @@ export default {
   },
   methods: {
     async register(values) {
+      console.log('click')
       this.reg_show_alert = true;
       this.reg_in_submission = true;
       this.reg_alert_variant = "bg-blue-500";
       this.reg_alert_message = "Iltimos, hisobingiz yaratilishini kuting";
-
+      let userCred = null;
       try {
         await this.$store.dispatch('register', values);
+        // userCred = await auth.createUserWithEmailAndPassword(
+        //         values.email,
+        //         values.password,
+        // );
       } catch (error) {
         this.reg_in_submission = false;
         this.reg_alert_variant = "bg-red-500";
@@ -233,6 +235,7 @@ export default {
      
       this.reg_show_variant = "bg-green-500";
       this.reg_show_message = "Muvaffaqiyat! Hisobingiz yaratildi";
+      console.log(userCred);
       window.location.reload();
     },
   },

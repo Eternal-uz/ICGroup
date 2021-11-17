@@ -105,8 +105,10 @@
 </template>
 
 <script>
+import MyButton from '@/components/UI/MyButton.vue'
 export default {
-    name: 'Tolov'
+    name: 'Tolov',
+    components:{MyButton,}
 }
 </script>
 

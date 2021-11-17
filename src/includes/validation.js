@@ -1,11 +1,14 @@
-import { Form as VeeForm, Field as VeeField, defineRule, ErrorMessage,configure } from 'vee-validate';
+import { Form as VeeForm, Field as VeeField, defineRule, ErrorMessage, configure } from 'vee-validate';
 import {
     required,
     min,
     max,
     alpha_spaces as alphaSpaces,
-    max_value as maxVal, min_value as minVal,
-    email, confirmed, not_one_of as excluded
+    max_value as maxVal, 
+    min_value as minVal,
+    email, 
+    confirmed, 
+    not_one_of as excluded
 } from '@vee-validate/rules';
 
 export default {
@@ -25,6 +28,7 @@ export default {
         defineRule('confirmed', confirmed); 
         defineRule('excluded', excluded); 
         defineRule('country_excluded', excluded); 
+
         configure({
             generateMessage: (ctx) => {
                 const messages = {
