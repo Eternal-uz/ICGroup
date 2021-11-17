@@ -10,7 +10,6 @@
     :validation-schema="schema"
     @submit="register"
     :initial-values="userData"
-    class="overflow-hidden"
   >
     <!-- Name -->
     <div class="mb-3">
@@ -96,7 +95,6 @@
             rounded
           "
           placeholder="Parol"
-          v-bind="field"
         />
       <ErrorMessage class="text-red-600" name="password" />
     </div>
@@ -168,7 +166,7 @@
       <label class="inline-block">Accept terms of service</label>
       <ErrorMessage class="text-red-600" name="tos" />
     </div>
-    <button type="submit" :disabled="reg_in_submission"
+    <button type="submit" 
       class="
         block
         w-full
@@ -187,9 +185,11 @@
 </template>
 
 <script>
-// import {  auth, } from '@/includes/firebase';
+import {  auth, usersCollection } from '@/includes/firebase';
+import {  mapState } from 'vuex';
 export default {
   name: "Register",
+
   data() {
     return {
       schema: {
@@ -205,26 +205,31 @@ export default {
       userData: {
         country: "Tashkent",
       },
-      reg_in_submission: false,
+     
       reg_show_alert: false,
       reg_alert_variant: "bg-blue-500",
       reg_alert_message: "Iltimos, hisobingiz yaratilishini kuting",
     };
   },
+  computed:{
+
+    ...mapState(['reg_in_submission']),
+  },
   methods: {
+    // ...mapGetters({reg: 'reg_in_submission' }),
     async register(values) {
       console.log('click')
-      this.reg_show_alert = true;
-      this.reg_in_submission = true;
-      this.reg_alert_variant = "bg-blue-500";
-      this.reg_alert_message = "Iltimos, hisobingiz yaratilishini kuting";
+      // this.reg_show_alert = true;
+      // this.reg_in_submission = true;
+      // this.reg_alert_variant = "bg-blue-500";
+      // this.reg_alert_message = "Iltimos, hisobingiz yaratilishini kuting";
       let userCred = null;
       try {
-        await this.$store.dispatch('register', values);
-        // userCred = await auth.createUserWithEmailAndPassword(
-        //         values.email,
-        //         values.password,
-        // );
+        // await this.$store.dispatch('register', values);
+        userCred = await auth.createUserWithEmailAndPassword(
+                values.email,
+                values.password,
+        );
       } catch (error) {
         this.reg_in_submission = false;
         this.reg_alert_variant = "bg-red-500";
@@ -232,11 +237,20 @@ export default {
           "Kutilmagan xatolik yuz berdi, keyinroq qayta urinib ko'ring";
         return;
       }
+      try {
+        await usersCollection.add({
+          name:values.name,
+          email:values.email
+        })
+
+      }catch(error){
+        console.log(error);
+      }
      
       this.reg_show_variant = "bg-green-500";
       this.reg_show_message = "Muvaffaqiyat! Hisobingiz yaratildi";
       console.log(userCred);
-      window.location.reload();
+      // window.location.reload();
     },
   },
 };

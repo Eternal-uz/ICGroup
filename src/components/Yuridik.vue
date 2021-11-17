@@ -24,6 +24,6 @@
 
 <script>
 export default {
-    name: 'Registration'
+    name: 'Yuridik'
 };
 </script>
