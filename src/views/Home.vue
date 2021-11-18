@@ -1,8 +1,8 @@
 <template>
-  <div class="home">
-      <div class="w-full justify-center flex">
+  <div class="home ">
+    <div class="w-full justify-center flex">
     <!-- the left side -->
-    <div class="w-3/5 pl-16 pt-24">
+    <div class="max-w-screen-xl w-2/5  mx-auto px-4 sm:px-6 lg:px-8 pl-16 pt-24">
       <h1 class="font-Poppins font-bold text-4xl tracking-wide ml-4 mb-8">
         Homiy sifatida ariza topshirish
       </h1>
@@ -29,7 +29,7 @@
             >Jismoniy shaxs</a
           >
         </li>
-        <li class="flex-auto text-center">
+        <li class="flex-auto text-center mr-4">
           <a class=" block
               rounded
               py-3
@@ -62,8 +62,8 @@
       <Tolov/>
     </div>
     <!-- the right side -->
-    <div class="flex flex-col justify-between bg-gray-50 w-2/5">
-     <div class="px-5 py-10">
+    <div class="max-w-screen-xl  sm:px-6 lg:px-8 flex flex-col justify-between bg-gray-50 ">
+     <div class="">
        <div class="p-10">
         <h2 class="font-SFProDisplay font-medium text-justify  text-xl">
           Yuqori sinflarda bolalar shaxs boʻlib, jamoa boʻlib shakllanadi. Ayni

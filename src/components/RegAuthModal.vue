@@ -13,11 +13,11 @@
         <div class="py-4 text-left px-6">
           <!--Title-->
           <div class="flex justify-between items-center pb-4">
-            <p class="text-2xl font-bold"></p>
-
+            <p class="text-2xl font-bold">Registratsiya </p>
             <!-- Modal Close Button -->
             <div class="modal-close cursor-pointer z-50"
-              @click.prevent="toggleRegModal" >
+              @click.prevent="toggleRegModal" 
+              >
               <i class="fas fa-times"></i>
             </div>
           </div>
@@ -29,13 +29,13 @@
 </template>
 <script>
 import { mapMutations, mapState } from "vuex";
-import Register from './Register.vue';
+import Register from './RegisterForm.vue';
 export default {
   components: { Register },
   name: "Auth",
   data() {
     return {
-      tab: "login",
+     
     };
   },
   computed: {
@@ -43,7 +43,7 @@ export default {
     // ...mapState(["authModalShow"]),
   },
   methods: {
-    ...mapMutations(["toggleRegModal"]),
+    ...mapMutations(["toggleRegModal","togglePagesFn"]),
   },
 };
 </script>

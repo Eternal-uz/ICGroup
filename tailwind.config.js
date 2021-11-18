@@ -2,6 +2,14 @@ module.exports = {
   purge: ['./public/**/*.html', './src/**/*.vue'],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    // container:{
+    //   center: true,
+    //   padding: {
+    //     DEFAULT: '1rem',
+    //     sm: '1.5rem',
+    //     lg: '2rem'
+    //   }
+    // },
     extend: {
       colors:{
         logo: '#E94A47',
@@ -25,5 +33,7 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('@themesberg/flowbite/plugin')
+  ],
 }

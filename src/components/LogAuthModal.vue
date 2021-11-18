@@ -13,7 +13,7 @@
         <div class="py-4 text-left px-6">
           <!--Title-->
           <div class="flex justify-between items-center pb-4">
-            <p class="text-2xl font-bold"></p>
+            <p class="text-2xl font-bold">Kirish</p>
 
             <!-- Modal Close Button -->
             <div class="modal-close cursor-pointer z-50"
@@ -29,7 +29,7 @@
 </template>
 <script>
 import { mapMutations, mapState } from "vuex";
-import Login from './Login.vue';
+import Login from './LoginForm.vue';
 export default {
   components: { Login },
   name: "Auth",
@@ -43,7 +43,7 @@ export default {
     // ...mapState(["authModalShow"]),
   },
   methods: {
-    ...mapMutations(["toggleLogModal"]),
+    ...mapMutations(["toggleLogModal", "togglePagesFn"]),
   },
 };
 </script>

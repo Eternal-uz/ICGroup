@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@tailwindcss/postcss7-compat": "^2.2.17",
+    "@themesberg/flowbite": "^1.1.1",
     "@vee-validate/rules": "^4.5.3",
     "autoprefixer": "^9",
     "core-js": "^3.6.5",

@@ -6,17 +6,13 @@
   >
     {{ reg_alert_message }}
   </div>
-  <vee-form
-    :validation-schema="schema"
-    @submit="register"
-    :initial-values="userData"
-  >
+  <vee-form :validation-schema="schema" @submit="register" :initial-values="userData">
     <!-- Name -->
     <div class="mb-3">
       <label class="inline-block mb-2">Ism</label>
       <vee-field
         type="text"
-        name="ism"
+        name="name"
         class="
           block
           w-full
@@ -31,7 +27,7 @@
         "
         placeholder="Ismingizni Yozing"
       />
-      <ErrorMessage class="text-red-600" name="ism" />
+      <ErrorMessage class="text-red-600" name="name" />
     </div>
     <!-- Email -->
     <div class="mb-3">
@@ -79,7 +75,7 @@
     <!-- Password -->
     <div class="mb-3">
       <label class="inline-block mb-2">Parol</label>
-        <vee-field
+      <vee-field
           name="password"
           type="password"
           class="
@@ -163,12 +159,11 @@
         value="1"
         class="w-4 h-4 float-left -ml-6 mt-1 rounded"
       />
-      <label class="inline-block">Accept terms of service</label>
+      <label class="inline-block">xizmat shartlarini qabul qiling</label>
       <ErrorMessage class="text-red-600" name="tos" />
     </div>
-    <button type="submit" 
-      class="
-        block
+    <button  type="submit" :disabled="reg_in_submission"
+        class=" block
         w-full
         bg-blue-500
         text-white
@@ -176,60 +171,45 @@
         px-3
         rounded
         transition
-        hover:bg-blue-600
-      "
-    >
+        hover:bg-blue-600">
       Submit
     </button>
   </vee-form>
 </template>
 
 <script>
-import {  auth, usersCollection } from '@/includes/firebase';
-import {  mapState } from 'vuex';
 export default {
-  name: "Register",
-
+  name: "RegisterForm",
   data() {
     return {
+      schema2: {},
       schema: {
-        ism: "required|min:3|max:100|alpha_spaces",
+        name: "required|min:3|max:100|alpha_spaces",
         email: "required|min:3|max:100|email",
-        age: "required|min_value:18|max_value:100|",
-        parol: "required|min:3|max:32",
-        confirm_password: "confirmed:@password",
+        age: "required|min_value:18|max_value:100",
+        password: "required|min:3|max:32",
+        confirm_password: "required|confirmed:@password",
         country: "required|country_excluded:Karakalpakston",
         tos: "tos",
-        genre: "required"
       },
       userData: {
         country: "Tashkent",
       },
-     
+      reg_in_submission: false,
       reg_show_alert: false,
       reg_alert_variant: "bg-blue-500",
       reg_alert_message: "Iltimos, hisobingiz yaratilishini kuting",
     };
   },
-  computed:{
-
-    ...mapState(['reg_in_submission']),
-  },
   methods: {
-    // ...mapGetters({reg: 'reg_in_submission' }),
-    async register(values) {
-      console.log('click')
-      // this.reg_show_alert = true;
-      // this.reg_in_submission = true;
-      // this.reg_alert_variant = "bg-blue-500";
-      // this.reg_alert_message = "Iltimos, hisobingiz yaratilishini kuting";
-      let userCred = null;
+      async register(values) {
+      this.reg_show_alert = true;
+      this.reg_in_submission = true;
+      this.reg_alert_variant = "bg-blue-500";
+      this.reg_alert_message = "Iltimos, hisobingiz yaratilishini kuting";
+
       try {
-        // await this.$store.dispatch('register', values);
-        userCred = await auth.createUserWithEmailAndPassword(
-                values.email,
-                values.password,
-        );
+        await this.$store.dispatch('register',values)
       } catch (error) {
         this.reg_in_submission = false;
         this.reg_alert_variant = "bg-red-500";
@@ -237,20 +217,11 @@ export default {
           "Kutilmagan xatolik yuz berdi, keyinroq qayta urinib ko'ring";
         return;
       }
-      try {
-        await usersCollection.add({
-          name:values.name,
-          email:values.email
-        })
-
-      }catch(error){
-        console.log(error);
-      }
-     
+          
       this.reg_show_variant = "bg-green-500";
       this.reg_show_message = "Muvaffaqiyat! Hisobingiz yaratildi";
-      console.log(userCred);
       // window.location.reload();
+      this.$router.push('/about')
     },
   },
 };

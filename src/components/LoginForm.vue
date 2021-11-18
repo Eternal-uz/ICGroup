@@ -74,6 +74,7 @@
 </template>
 
 <script>
+// import { mapState } from 'vuex';
 export default {
   name: "Login",
   data() {
@@ -104,8 +105,13 @@ export default {
       }
       this.login_alert_variant = "bg-green-500";
       this.login_alert_message = "Sucess! You are now logged in";
-      window.location.reload();
+      // window.location.reload();
+      this.$router.push('/about');
+      
     },
   },
+  computed:{
+    // ...mapState(['togglePages'])
+  }
 };
 </script>

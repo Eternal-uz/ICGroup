@@ -1,13 +1,14 @@
 import { createStore } from 'vuex';
-//import { auth, usersCollection  } from "@/includes/firebase";
+import { auth, usersCollection  } from "@/includes/firebase";
+// import { router } from '@/router/index.js';
 
 export default createStore({
     state: {
         regModalShow: false,
         logModalShow: false,
         userLoggedIn: false,
+        togglePages: false,
         toggleAuthModal: false,
-        reg_in_submission: false,
     },
     mutations: {
         toggleRegModal: (state) => {
@@ -18,49 +19,52 @@ export default createStore({
         },
         toggleAuth(state) {
             state.userLoggedIn = !state.userLoggedIn;
+        },
+        togglePagesFn(state){
+            state.togglePages = !state.togglePages
+            console.log('togglePages');
+          }
+    },
+
+    actions: {
+        async register({commit}, payload) {
+            const userCred = await auth.createUserWithEmailAndPassword(
+                payload.email,
+                payload.password
+            );
+            await usersCollection.doc(userCred.user.uid).set({
+                name: payload.name,
+                email: payload.email,
+                age: payload.age,
+                country: payload.country,
+
+            });
+
+            await userCred.user.updateProfile({
+                displayName: payload.name,
+            })
+
+            commit('toggleAuth');
+        },
+        init_login({commit}){
+            const user = auth.currentUser;
+            if(user){
+                commit('toggleAuth');
+            }
+        },
+        async login({commit}, payload){
+           await auth.signInWithEmailAndPassword(payload.email, payload.password);
+
+           commit('toggleAuth','togglePagesFn');
+        },
+        async signout({commit}){
+            await auth.signOut();
+            this.$router.push('/')
+
+            commit('toggleAuth');
         }
+
     },
-    getters: {
-        //     authModalShow: (state) => state.authModalShow, 
-    },
-    // actions: {
-    //     async register({commit}, payload) {
-    //         const userCred = await auth.createUserWithEmailAndPassword(
-    //             payload.email,
-    //             payload.password
-    //         );
-    //         await usersCollection.doc(userCred.user.uid).set({
-    //             name: payload.name,
-    //             email: payload.email,
-    //             age: payload.age,
-    //             country: payload.country,
-
-    //         });
-
-    //         await userCred.user.updateProfile({
-    //             displayName: payload.name,
-    //         })
-
-    //         commit('toggleAuth');
-    //     },
-    //     init_login({commit}){
-    //         const user = auth.currentUser;
-    //         if(user){
-    //             commit('toggleAuth');
-    //         }
-    //     },
-    //     async login({commit}, payload){
-    //        await auth.signInWithEmailAndPassword(payload.email, payload.password);
-
-    //        commit('toggleAuth');
-    //     },
-    //     async signout({commit}){
-    //         await auth.signOut();
-
-    //         commit('toggleAuth');
-    //     }
-
-    // },
     modules: {},
 });
 
