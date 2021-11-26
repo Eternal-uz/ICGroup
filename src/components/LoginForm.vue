@@ -53,9 +53,7 @@
       />
       <ErrorMessage class="text-red-600" name="password" />
     </div>
-    <button
-      type="submit"
-      :disabled="login_in_submission"
+    <button type="submit" :disabled="login_in_submission"
       class="
         block
         w-full
@@ -105,8 +103,8 @@ export default {
       }
       this.login_alert_variant = "bg-green-500";
       this.login_alert_message = "Sucess! You are now logged in";
-      // window.location.reload();
-      this.$router.push('/about');
+      window.location.reload();
+      this.$router.push('/talabalar');
       
     },
   },

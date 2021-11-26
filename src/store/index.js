@@ -1,13 +1,11 @@
 import { createStore } from 'vuex';
 import { auth, usersCollection  } from "@/includes/firebase";
-// import { router } from '@/router/index.js';
 
 export default createStore({
     state: {
         regModalShow: false,
         logModalShow: false,
         userLoggedIn: false,
-        togglePages: false,
         toggleAuthModal: false,
     },
     mutations: {
@@ -20,10 +18,8 @@ export default createStore({
         toggleAuth(state) {
             state.userLoggedIn = !state.userLoggedIn;
         },
-        togglePagesFn(state){
-            state.togglePages = !state.togglePages
-            console.log('togglePages');
-          }
+        
+
     },
 
     actions: {
@@ -59,7 +55,7 @@ export default createStore({
         },
         async signout({commit}){
             await auth.signOut();
-            this.$router.push('/')
+            // this.$router.push('/')
 
             commit('toggleAuth');
         }

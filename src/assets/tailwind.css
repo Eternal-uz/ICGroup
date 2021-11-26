@@ -6,3 +6,8 @@
 
 @tailwind utilities;
 
+@layer utilities {
+    .no-outline {
+      outline: none;
+    }
+}

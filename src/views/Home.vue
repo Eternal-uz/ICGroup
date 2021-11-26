@@ -1,8 +1,9 @@
 <template>
   <div class="home ">
-    <div class="w-full justify-center flex">
+    <app-header/>
+    <div class="justify-center flex">
     <!-- the left side -->
-    <div class="max-w-screen-xl w-2/5  mx-auto px-4 sm:px-6 lg:px-8 pl-16 pt-24">
+    <div class=" mx-auto px-4 sm:px-6 lg:px-8 pl-28 pt-24">
       <h1 class="font-Poppins font-bold text-4xl tracking-wide ml-4 mb-8">
         Homiy sifatida ariza topshirish
       </h1>
@@ -62,7 +63,7 @@
       <Tolov/>
     </div>
     <!-- the right side -->
-    <div class="max-w-screen-xl  sm:px-6 lg:px-8 flex flex-col justify-between bg-gray-50 ">
+    <div class="flex flex-col justify-between bg-gray-50 ">
      <div class="">
        <div class="p-10">
         <h2 class="font-SFProDisplay font-medium text-justify  text-xl">
@@ -80,7 +81,7 @@
       </div>
      </div>
       <div class="flex items-end justify-end">
-        <img src="@/assets/images/rightBg.png" class="" />
+        <img src="@/assets/images/rightBg.png" class="w-60 h-60" />
       </div>
     </div>
   </div>
@@ -91,6 +92,7 @@
 import Jismoniy from '@/components/Jismoniy.vue'
 import Yuridik from '@/components/Yuridik.vue'
 import Tolov from '@/components/Tolov.vue'
+import AppHeader from '@/components/Header.vue'
 export default {
   name: 'Home',
   data(){
@@ -98,7 +100,12 @@ export default {
       tab: 'Jismoniy'
     }
   },
-  components: { Jismoniy, Yuridik, Tolov },
+  components: { 
+    Jismoniy, 
+    Yuridik, 
+    Tolov,
+    AppHeader 
+    },
 
 }
 </script>

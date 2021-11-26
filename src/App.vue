@@ -1,19 +1,17 @@
 <template>
   <div class="app">
-    <Header />
-    <RegAuthModal />
+    <reg-auth-modal />
     <log-auth-modal />
   </div>
-  <router-view />
+  <router-view/>
 </template>
 
 
 <script>
-import Header from "@/components/Header.vue";
 import RegAuthModal from "./components/RegAuthModal.vue";
 import LogAuthModal from "./components/LogAuthModal.vue";
 export default {
-  components: { Header, RegAuthModal, LogAuthModal },
+  components: { RegAuthModal, LogAuthModal },
   name: "App",
   created(){
     this.$store.dispatch('init_login')
@@ -24,7 +22,7 @@ export default {
 
 
 
-<style lang="scss">
+<style >
 * {
   margin: 0;
   padding: 0;
@@ -32,4 +30,5 @@ export default {
   list-style: none;
   box-sizing: border-box;
 }
+
 </style>

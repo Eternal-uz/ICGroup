@@ -11,6 +11,7 @@ module.exports = {
     //   }
     // },
     extend: {
+      outline:{white: 'none'},
       colors:{
         logo: '#E94A47',
         teal: '#00AE69',
@@ -19,7 +20,8 @@ module.exports = {
         borderColor: '#3366FF',
         tcolor: '#1D1D1F',
         uzs: '#2E5BFF',
-        inputActiveColor: '#E0E7FF33'
+        inputActiveColor: '#E0E7FF33',
+        btnColor: '#EDF1FD',
       },
       fontFamily:{
         OpenSans: 'OpenSans',

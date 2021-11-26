@@ -220,8 +220,8 @@ export default {
           
       this.reg_show_variant = "bg-green-500";
       this.reg_show_message = "Muvaffaqiyat! Hisobingiz yaratildi";
-      // window.location.reload();
-      this.$router.push('/about')
+      window.location.reload();
+      this.$router.push({name: 'home'})
     },
   },
 };
